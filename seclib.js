@@ -316,7 +316,7 @@ function sha1(str) {
     return temp.toLowerCase();
 }
 
-var sha256 = function sha256(ascii) {
+function sha256(ascii) {
 	function rightRotate(value, amount) {
 		return (value>>>amount) | (value<<(32 - amount));
 	};
@@ -412,3 +412,12 @@ var sha256 = function sha256(ascii) {
 	}
 	return result;
 };
+
+
+function rot13(str) {
+  var input     = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  var output    = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
+  var index     = x => input.indexOf(x);
+  var translate = x => index(x) > -1 ? output[index(x)] : x;
+  return str.split('').map(translate).join('');
+}
